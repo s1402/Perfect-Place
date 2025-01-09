@@ -1,0 +1,65 @@
+<body>
+    <form [formGroup]="form" (ngSubmit)="login()">
+        <span class="header-logo">
+            <img src="../../../../assets/images/perfect-place-logo.png" alt="perfect-place">
+        </span>
+        <div class="form-container">
+            <!----------------- form error ------------------->
+            <span *ngIf="form.errors" class="invalid-buyer">
+                {{form.errors['error']}}
+            </span>
+
+            <!--------------- email -------------->
+            <div class="form-group">
+                <label for="email">{{"login.email" | translate}}</label>
+                <input type="text" formControlName="email" name="email" id="email" class="email" placeholder="Email">
+                <!------------ Form Validation Errors ------------>
+                <span *ngIf="email?.touched && email?.invalid" class="input-error">
+                    <span *ngIf="email?.errors?.['required']">{{"error.emailRequired" | translate}}</span>
+                    <span *ngIf="email?.errors?.['invalidEmail']">
+                        {{"error.invalidEmail" | translate}}
+                    </span>
+                </span>
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+                <label for="password">{{"login.password" | translate}}</label>
+                <input type="password" formControlName="password" name="password" id="password" class="password"
+                    placeholder="At least 6 characters">
+                <!------------ Form Validation Errors ------------>
+                <span *ngIf="password?.touched && password?.invalid" class="input-error">
+                    <span *ngIf="password?.errors?.['required']"> {{"error.passwordRequired" | translate}}</span>
+                    <span *ngIf="password?.errors?.['minlength']"> {{"error.minimumLength" | translate}}</span>
+                </span>
+            </div>
+            <!--Sign In Btn -->
+            <div class="form-group">
+                <button class="signin-button">{{"login.signIn" | translate}}</button>
+            </div>
+
+            <!-- Forgot Password-->
+            <div class="form-group">
+                <a>{{"login.forgotPassword" | translate}}</a>
+            </div>
+
+            <!-- Seller Account-->
+            <div class="form-group">
+                <label for="seller-account">{{"login.buyingForWork" | translate}}</label>
+                <a routerLink="/seller/login">{{"login.shopOnPerfectPlaceBusiness" | translate}}</a>
+            </div>
+
+            <!-- Register Buyer-->
+            <div class="form-group">
+                <label for="register-buyer">{{"login.newToPerfectPlace" | translate}}</label>
+                <a routerLink="/buyer/register">{{"login.createAccount" | translate}}</a>
+            </div>
+
+             <!-- Home page -->
+             <div class="form-group">
+                <label for="home-page">Continue without login?</label>
+                <a routerLink="/">{{"home" | translate}}</a>
+            </div>
+        </div>
+    </form>
+</body>

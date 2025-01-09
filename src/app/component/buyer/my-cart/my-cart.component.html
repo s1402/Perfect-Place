@@ -1,0 +1,41 @@
+<div class="main-container">
+  <app-header></app-header>
+  <!-- Item removed from cart banner -->
+  <div *ngIf="showItemRemovedMessage" class="success-banner">
+    {{ "successMsg.removingItemFromCart" | translate }}
+  </div>
+
+  <!-- Item purcased succesfuly banner -->
+  <div *ngIf="showSuccessBanner" class="success-banner">
+    {{ "successMsg.orderPlaced" | translate }}
+  </div>
+
+  <div class="cart-container" *ngIf="cartItems.length > 0; else emptyCart">
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <div class="product-image">
+        <img [src]="item?.productId?.images?.[0]?.url" [alt]="item?.productId?.name" />
+      </div>
+      <div class="product-info">
+        <h3>{{ item.productId.name }}</h3>
+        <p>{{ item.productId.description }}</p>
+        <p>Category: {{ item.productId.category }}</p>
+        <p>Price: ₹{{ item.productId.price }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+      </div>
+      <div class="cart-controls">
+        <button class="remove-btn" (click)="removeFromCart(item.productId._id)">Remove</button>
+      </div>
+    </div>
+    <button class="buy-now" (click)="buyNow()">Buy Now</button>
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="empty-cart-message">
+      <h2>Your cart is empty!</h2>
+      <p>Add some products to see them here.</p>
+      <div class="navigate-home">
+        <h1 routerLink="/buyer/home">Click here to navigate back to the home page</h1>
+      </div>
+    </div>
+  </ng-template>
+</div>

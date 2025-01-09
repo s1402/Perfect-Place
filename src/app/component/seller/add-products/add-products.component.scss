@@ -1,0 +1,207 @@
+/* Main container styling */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  font-family: "Arial", sans-serif;
+}
+
+/* Form container */
+.form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin-top: 100px;
+}
+
+/* Header */
+.header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Form control styling */
+.form-control {
+  margin-bottom: 1.2rem;
+}
+
+.form-control label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+.form-control input,
+.form-control select,
+.form-control textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.form-control input:focus,
+.form-control select:focus,
+.form-control textarea:focus {
+  border-color: #3a7bd5;
+  outline: none;
+}
+
+/* Dropdown styling */
+.form-control select {
+  appearance: none;
+  background-color: #fff;
+}
+
+/* Image upload styling */
+.form-control input[type="file"] {
+  border: none;
+  padding: 0;
+}
+
+/* Image preview section */
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.image-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.alt-text {
+  margin-top: 0.3rem;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Button styling */
+.add-product-button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #3a7bd5;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-product-button:hover {
+  background-color: #3567a8;
+}
+
+/* Container for the image upload section */
+.image-upload-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Individual image upload box styling */
+.image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 270px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* File input styling */
+.image-box input[type="file"] {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Image preview styling */
+.image-preview {
+  margin-top: 0.5rem;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.add-another-image {
+  display: inline-block;
+  padding: 10px 16px;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-another-image:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+/* Remove button styling */
+.remove-btn {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  color: #fff;
+  background-color: #e74c3c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #c0392b;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+      margin-top: 240px;
+  }
+}

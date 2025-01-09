@@ -1,0 +1,94 @@
+{
+  "appTitle": "Welcome To Perfect Place",
+  "header": {
+    "address": "Sign In to Enter Location",
+    "sign-in": "Hello User, Please Sign In",
+    "orders": "Your orders",
+    "products": "Your products",
+    "home": "Home"
+  },
+  "home": "Navigate to home",
+  "footerContent": "2024 Perfect Place. All rights reserved.",
+  "error": {
+    "emailRequired": "Email is required",
+    "passwordRequired": "Password is required",
+    "phoneRequired": "Phone No is required",
+    "streetRequired": "Street is required",
+    "cityRequired": "City is required",
+    "stateRequired": "State is required",
+    "postalCodeRequired": "Postal Code is required",
+    "nameRequired": "Name is required",
+    "otpRequired":"Otp is required",
+    "invalidOtp":"OTP should be 6 digits",
+    "minimumLength": "Minimum Length is 6",
+    "invalidEmail": "Invalid Email address",
+    "invalidPhone": "Invalid Phone No",
+    "minimumLengthAddress" :"Minimum 3 characters required",
+    "maximumLengthAddress": "Minimum 20 characters allowed",
+    "businessNameRequired":"Business name is required",
+    "descriptionRequired":"Description is required",
+    "categoryRequired":"Category is required",
+    "priceRequired":"Price is required",
+    "stockRequired":"Stock is required",
+    "minPrice":"Add product worth minimum 100 ₹",
+    "minStock":"Add minimum 1 item"
+  },
+  "login": {
+    "password": "Password",
+    "signIn": "Sign In",
+    "email":"Email",
+    "forgotPassword": "Forgot Password?",
+    "buyingForWork": "Buying for work?",
+    "shopOnPerfectPlaceBusiness": "Shop on Perfect Place Business",
+    "newToPerfectPlace": "New to Perfect Place?",
+    "newToPerfectPlaceBusiness":"New to Perfect Place Business?",
+    "createAccount": "Create your Perfect Place account",
+    "shopOnPerfectPlace":"Shop On Perfect Place"
+  },
+  "register": {
+    "header":"Create Account",
+    "businessHeader": "Create Business Account",
+    "name":"Your name",
+    "businessName":"Business name",
+    "verifyEmailLabel":"To verify your number, we will send you a text message with a temporary code. Message and data rates may apply",
+    "verifyEmailText":"Verify email",
+    "createBusinessAccount":"Create a free Perfect Place Business account",
+    "createPersonalAccount":"Create a free Perfect Place Personal Account",
+    "alreadyHaveAccount":"Already have an account?",
+    "address" : {
+        "state":"State",
+        "street":"Street",
+        "city":"City",
+        "postalCode": "Postal Code"
+    },
+    "enjoyExperience": "Enjoy a personalized shopping experience"
+   
+  },
+  "VerifyEmail":{
+    "enterOtp":"Enter OTP",
+    "resendOtp":"Resend OTP"
+  },
+  "addProduct":{
+    "header":"Add Products",
+    "name":"Product name",
+    "description":"Product description",
+    "price":"Product price in ₹",
+    "stock":"Product stock",
+    "category":"Product category",
+    "submit":"Submit"
+  },
+  "successMsg":{
+    "productAdded": "Product added successfully!",
+    "accountCreated": "Account created successfully!",
+    "otpResend":"OTP Resent Successfully!",
+    "loginToContinue":"Login to continue",
+    "addedToCart": "Product added to cart!",
+    "removingItemFromCart":"Removing item from cart",
+    "orderPlaced": "Order placed successfully!😀",
+    "orderStatusUpdated": "Order status updated successfuly!"
+  },
+  "errorMsg":{
+    "productAlreadyCart": "Product already added in cart",
+    "outOfStock": "Item out of stock😟"
+  }
+}

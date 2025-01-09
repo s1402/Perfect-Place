@@ -1,0 +1,160 @@
+<body>
+    <form [formGroup]="form" (ngSubmit)="register()">
+        <span class="header-logo">
+            <img src="../../../../assets/images/perfect-place-logo.png" alt="perfect-place">
+        </span>
+        <div class="form-container">
+            <!----------------- form error ------------------->
+            <span *ngIf="form.errors" class="invalid-buyer">
+                {{form.errors['error'].error}}
+            </span>
+            <!-------------- Heading ------------------->
+            <div class="header">
+                {{"register.businessHeader" | translate}}
+            </div>
+            <!---------------name -------------->
+            <div class="form-group">
+                <label for="name">{{"register.name" | translate}}</label>
+                <input type="text" formControlName="name" name="name" id="name" class="name"
+                    placeholder="First and last name">
+                <!-------- Form Validation Errors -------->
+                <span *ngIf="name?.touched && name?.invalid" class="input-error">
+                    <span *ngIf="name?.errors?.['required']"> {{"error.nameRequired" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" formControlName="email" name="email" id="email" class="email" placeholder="Email">
+                <!------------ Form Validation Errors ------------>
+                <span *ngIf="email?.touched && email?.invalid" class="input-error">
+                    <span *ngIf="email?.errors?.['required']"> {{"error.emailRequired" | translate}}</span>
+                    <span *ngIf="email?.errors?.['invalidEmail']">
+                        {{"error.invalidEmail" | translate}}
+                    </span>
+                </span>
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+                <label for="password">{{"login.password" | translate}}</label>
+                <input type="password" formControlName="password" name="password" id="password" class="password"
+                    placeholder="At least 6 characters">
+                <!------------ Form Validation Errors ------------>
+                <span *ngIf="password?.touched && password?.invalid" class="input-error">
+                    <span *ngIf="password?.errors?.['required']"> {{"error.passwordRequired" | translate}}</span>
+                    <span *ngIf="password?.errors?.['minlength']"> {{"error.minimumLength" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- phone -->
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" formControlName="phone" name="phone" id="phone" class="phone" placeholder="Phone No">
+                <!------------ Form Validation Errors ------------>
+                <span *ngIf="phone?.touched && phone?.invalid" class="input-error">
+                    <span *ngIf="phone?.errors?.['required']"> {{"error.phoneRequired" | translate}}</span>
+                    <span *ngIf="phone?.errors?.['invalidPhone']">
+                        {{"error.invalidPhone" | translate}}
+                    </span>
+                </span>
+            </div>
+
+            <!---------------Business name -------------->
+            <div class="form-group">
+                <label for="businessName">{{"register.businessName" | translate}}</label>
+                <input type="text" formControlName="businessName" name="businessName" id="businessName" class="name"
+                    placeholder="Business Name">
+                <!-------- Form Validation Errors -------->
+                <span *ngIf="businessName?.touched && businessName?.invalid" class="input-error">
+                    <span *ngIf="businessName?.errors?.['required']"> {{"error.businessNameRequired" |
+                        translate}}</span>
+                </span>
+            </div>
+
+            <!---------------Address -------------->
+            <h3>Buisiness Address</h3>
+            <div formGroupName="businessAddress">
+
+                <!---------------Street -------------->
+                <div class="form-group">
+                    <label for="street">{{"register.address.street" | translate}}</label>
+                    <input type="text" formControlName="street" name="street" id="street" class="street"
+                        placeholder="Street Details">
+                    <!-------- Form Validation Errors -------->
+                    <span *ngIf="street?.touched && street?.invalid" class="input-error">
+                        <span *ngIf="street?.errors?.['required']"> {{"error.streetRequired" | translate}}</span>
+                        <span *ngIf="street?.errors?.['minlength']"> {{"error.minimumLengthAddress" | translate}}</span>
+                        <span *ngIf="street?.errors?.['maxlength']"> {{"error.maximumLengthAddress" | translate}}</span>
+                    </span>
+                </div>
+
+                <!---------------City -------------->
+                <div class="form-group">
+                    <label for="city">{{"register.address.city" | translate}}</label>
+                    <input type="text" formControlName="city" name="city" id="city" class="city" placeholder="City">
+                    <!-------- Form Validation Errors -------->
+                    <span *ngIf="city?.touched && city?.invalid" class="input-error">
+                        <span *ngIf="city?.errors?.['required']"> {{"error.cityRequired" | translate}}</span>
+                        <span *ngIf="city?.errors?.['minlength']"> {{"error.minimumLengthAddress" | translate}}</span>
+                        <span *ngIf="city?.errors?.['maxlength']"> {{"error.maximumLengthAddress" | translate}}</span>
+                    </span>
+                </div>
+
+                <!---------------State -------------->
+                <div class="form-group">
+                    <label for="state">{{"register.address.state" | translate}}</label>
+                    <input type="text" formControlName="state" name="state" id="state" class="state"
+                        placeholder="State">
+                    <!-------- Form Validation Errors -------->
+                    <span *ngIf="state?.touched && state?.invalid" class="input-error">
+                        <span *ngIf="state?.errors?.['required']"> {{"error.stateRequired" | translate}}</span>
+                        <span *ngIf="state?.errors?.['minlength']"> {{"error.minimumLengthAddress" | translate}}</span>
+                        <span *ngIf="state?.errors?.['maxlength']"> {{"error.maximumLengthAddress" | translate}}</span>
+                    </span>
+                </div>
+
+                <!---------------Postal Code -------------->
+                <div class="form-group">
+                    <label for="postalCode">{{"register.address.postalCode" | translate}}</label>
+                    <input type="text" formControlName="postalCode" name="postalCode" id="postalCode" class="postalCode"
+                        placeholder="Postal Code">
+                    <!-------- Form Validation Errors -------->
+                    <span *ngIf="postalCode?.touched && postalCode?.invalid" class="input-error">
+                        <span *ngIf="postalCode?.errors?.['required']"> {{"error.postalCodeRequired" |
+                            translate}}</span>
+                        <span *ngIf="postalCode?.errors?.['minlength']"> {{"error.minimumLengthAddress" |
+                            translate}}</span>
+                        <span *ngIf="postalCode?.errors?.['maxlength']"> {{"error.maximumLengthAddress" |
+                            translate}}</span>
+                    </span>
+                </div>
+            </div>
+
+            <!------ Verify ------>
+            <div class="form-group">
+                <p>{{"register.verifyEmailLabel" | translate}}</p>
+                <button class="register-button"> {{"register.verifyEmailText" | translate}}</button>
+            </div>
+
+            <!-- Buyer Account-->
+            <div class="form-group">
+                <label for="seller-account">{{"register.enjoyExperience" | translate}}</label>
+                <a routerLink="/buyer/register">{{"register.createPersonalAccount" | translate}}</a>
+            </div>
+
+            <!-- Sign in Seller -->
+            <div class="form-group">
+                <label for="signin-buyer">{{"register.alreadyHaveAccount" | translate}}</label>
+                <a routerLink="/seller/login">{{"login.signIn" | translate}}</a>
+            </div>
+
+              <!-- Home page -->
+              <div class="form-group">
+                <label for="home-page">Continue without Register?</label>
+                <a routerLink="/">{{"home" | translate}}</a>
+            </div>
+        </div>
+    </form>
+</body>

@@ -1,0 +1,138 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 330px;
+    box-sizing: border-box;
+}
+
+.header-logo img {
+    display: block;
+    margin: 0 auto 20px;
+    width: 150px;
+}
+
+.header {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    /* Ensures all form groups align */
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input.otp {
+    width: 100%;
+    /* Full width to match form container */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.enter-otp-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.enter-otp {
+    font-size: 14px;
+    color: #333;
+}
+
+.resend-otp {
+    color: #007BFF;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.resend-otp:hover {
+    text-decoration: underline;
+}
+
+p {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+a {
+    color: #007BFF;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.verify-email-button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    /* Full width button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.verify-email-button:hover {
+    background-color: #45a049;
+}
+
+.invalid-otp {
+    color: #d9534f;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+input:focus,
+.otp:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Form Error at the Top */
+.invalid-otp {
+    color: #e74c3c;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}

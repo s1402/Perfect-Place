@@ -1,0 +1,28 @@
+<div class="main-container">
+  <app-header></app-header>
+  <div class="products-container" *ngIf="products && products.length>0; else noProducts">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="product-image">
+        <button class="carousel-arrow left" (click)="prevImage(product)">
+          &lt;
+        </button>
+        <img *ngIf="product.images && product.images.length > 0" [src]="product.images[product.currentIndex || 0].url"
+          [alt]="product.images[product.currentIndex || 0].altText || 'Product image'" />
+        <button class="carousel-arrow right" (click)="nextImage(product)">
+          &gt;
+        </button>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-category">Category: {{ product.category }}</p>
+        <p class="product-price">Price: ₹{{ product.price }}</p>
+        <p class="product-stock">Stock: {{ product.stock }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noProducts>
+    <p class="no-products-message">You haven't added any products yet.</p>
+  </ng-template>
+</div>

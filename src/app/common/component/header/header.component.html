@@ -1,0 +1,65 @@
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<header>
+    <div class="header-container">
+        <!------------------------------------------------- Header Logo -------------------------------------->
+        <span>
+            <img src="../../../../assets/images/perfect-place-logo.png" class="header-logo" alt="perfect-place">
+        </span>
+        <!---------------------------------------- Address ------------------------------------>
+        <span class="header-address">
+            <img src="../../../../assets/images/maps-logo.png" class="address-logo" alt="maps-logo">
+            <div *ngIf="authService.isUserLoggedIn(); else notLoggedIn">
+                {{ displayAddress() }}
+            </div>
+            <ng-template #notLoggedIn>
+                <a routerLink="/buyer/login">
+                    <span> {{"header.address" | translate}} </span>
+                </a>
+            </ng-template>
+        </span>
+        <!------------------------------ Name ---------------------------->
+        <div class="login-container">
+            <span class="header-login">
+                <div *ngIf="authService.isUserLoggedIn(); else unknownUser">
+                    Hello {{authService.getTokenDetails()?.name}}
+                </div>
+                <ng-template #unknownUser>
+                    <a routerLink="/buyer/login">{{"header.sign-in" | translate}} </a>
+                </ng-template>
+            </span>
+            <!---------------------------------- Orders and Home (Buyer) ---------------------------->
+            <span>
+                <div class="header-home" *ngIf="!authService.getTokenDetails()?.isSeller; else seller">
+                    <a class="header-orders" routerLink="/buyer/my-orders">{{"header.orders" | translate}}</a>
+                    <a class="header-orders" routerLink="/buyer/home">{{"header.home" | translate}}</a>
+                </div>
+                <!---------------------------------- Products and Home (Seller) ---------------------------->
+                <ng-template class="header-home" #seller>
+                    <a routerLink="/seller/my-products">{{"header.products" | translate}}</a>
+                    <a class="header-home" routerLink="/seller/home">{{"header.home" | translate}}</a>
+                </ng-template>
+            </span>
+            <!---------------- Cart (Buyer) -------------------->
+            <div *ngIf="!authService.getTokenDetails()?.isSeller">
+                <span class="header-cart">
+                    <a routerLink="/buyer/my-cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">{{ cartCount }}</span>
+                    </a>
+                </span>
+            </div>
+            <!------------- Add Products (Seller) -------------->
+            <div *ngIf="authService.getTokenDetails()?.isSeller">
+                <span class="header-add-products">
+                    <a routerLink="/seller/add-products">{{"addProduct.header" | translate}}</a>
+                </span>
+            </div>
+            <!-------------------------- Logout ---------------------------->
+            <span *ngIf="authService.isUserLoggedIn()" class="header-logout">
+                <a (click)="logout()">Logout</a>
+            </span>
+        </div>
+    </div>
+</header>

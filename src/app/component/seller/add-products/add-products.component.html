@@ -1,0 +1,107 @@
+<div class="main-container">
+    <app-header></app-header>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="form-container">
+            <!-- Success Banner -->
+            <div *ngIf="showSuccessBanner" class="success-banner">
+                {{ "successMsg.productAdded" | translate }}
+            </div>
+            <!-- Form errors -->
+            <span *ngIf="false" class="invalid-product">
+                {{form.errors?.['error'].error}}
+            </span>
+
+            <!-- Heading -->
+            <div class="header">
+                {{ "addProduct.header" | translate }}
+            </div>
+
+            <!-- Name -->
+            <div class="form-control">
+                <label for="name">
+                    {{"addProduct.name" | translate}}
+                </label>
+                <input type="text" name="name" id="name" formControlName="name" class="name" placeholder="Product Name">
+                <!-- Form validation error -->
+                <span *ngIf="name?.touched && name?.invalid" class="input-error">
+                    <span *ngIf="name?.errors?.['required']"> {{"error.nameRequired" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- Description -->
+            <div class="form-control">
+                <label for="description">
+                    {{"addProduct.description" | translate}}
+                </label>
+                <textarea name="description" id="description" formControlName="description" class="description"
+                    placeholder="Product Description"></textarea>
+                <span *ngIf="description?.touched && description?.invalid" class="input-error">
+                    <span *ngIf="description?.errors?.['required']"> {{"error.descriptionRequired" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- Price -->
+            <div class="form-control">
+                <label for="price">
+                    {{"addProduct.price" | translate}}
+                </label>
+                <input type="number" name="price" id="price" formControlName="price" class="price" placeholder="Price">
+                <span *ngIf="price?.touched && price?.invalid" class="input-error">
+                    <span *ngIf="price?.errors?.['required']"> {{"error.priceRequired" | translate}}</span>
+                    <span *ngIf="price?.errors?.['min']"> {{"error.minPrice" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- Stock -->
+            <div class="form-control">
+                <label for="stock">
+                    {{"addProduct.stock" | translate}}
+                </label>
+                <input type="number" name="stock" id="stock" formControlName="stock" class="stock" placeholder="stock">
+                <span *ngIf="stock?.touched && stock?.invalid" class="input-error">
+                    <span *ngIf="stock?.errors?.['required']"> {{"error.stockRequired" | translate}}</span>
+                    <span *ngIf="stock?.errors?.['min']"> {{"error.minStock" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- Category -->
+            <div class="form-control">
+                <label for="category">
+                    {{"addProduct.category" | translate}}
+                </label>
+                <select name="category" id="category" formControlName="category" class="category">
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
+                    <option value="Children">Children</option>
+                </select>
+                <span *ngIf="category?.touched && category?.invalid" class="input-error">
+                    <span *ngIf="category?.errors?.['required']"> {{"error.categoryRequired" | translate}}</span>
+                </span>
+            </div>
+
+            <!-- Images Section -->
+            <div class="image-upload-section">
+                <div class="image-box" *ngFor="let image of images.controls; let i = index">
+                    <label for="imageUpload-{{i}}">Upload Image</label>
+                    <input type="file" (change)="onImageUpload($event, i)" id="imageUpload-{{i}}" accept="image/*">
+                    <!-- Image Preview -->
+                    <div *ngIf="uploadedImages[i]">
+                        <img [src]="uploadedImages[i].url" [alt]="uploadedImages[i].altText" class="image-preview">
+                        <button type="button" class="remove-btn" (click)="removeImage(i)">Remove</button>
+                    </div>
+                </div>
+                <span *ngIf="images?.errors?.['error']" class="input-error">
+                    {{ images.errors?.['error']}}
+                </span>
+            </div>
+
+            <button type="button" class="add-another-image" (click)="addImage()">Add Another Image</button>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button class="add-product-button">{{ "addProduct.submit" | translate }}</button>
+            </div>
+        </div>
+    </form>
+</div>

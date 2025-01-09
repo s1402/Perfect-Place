@@ -1,0 +1,66 @@
+<div class="main-container">
+  <app-header></app-header>
+
+  <!-- Login to continue banner -->
+  <div *ngIf="showLoginBanner" class="success-banner">
+    {{ "successMsg.loginToContinue" | translate }}
+  </div>
+
+  <!-- Item added to cart banner -->
+  <div *ngIf="showSuccessBanner" class="success-banner">
+    {{ "successMsg.addedToCart" | translate }}
+  </div>
+
+  <!-- Item already in cart -->
+  <div *ngIf="productAlreadyInCartErrorBanner" class="error-banner">
+    {{ "errorMsg.productAlreadyCart" | translate }}
+  </div>
+
+  <!-- Item out of stock banner -->
+  <div *ngIf="outOfStockErrorBanner" class="error-banner">
+    {{ "errorMsg.outOfStock" | translate }}
+  </div>
+  <div class="filter-container">
+    <button *ngFor="let category of categories" (click)="filterByCategory(category)">
+      {{ category }}
+    </button>
+  </div>
+
+  <div class="products-container" *ngIf="filteredProducts && filteredProducts.length; else noProducts">
+    <div *ngFor="let product of filteredProducts" class="product-card">
+      <div class="product-image">
+        <button class="carousel-arrow left" (click)="prevImage(product)">
+          &lt;
+        </button>
+        <img *ngIf="product.images && product.images.length > 0" [src]="product.images[product.currentIndex || 0].url"
+          [alt]="product.images[product.currentIndex || 0].altText || 'image'" />
+        <button class="carousel-arrow right" (click)="nextImage(product)">
+          &gt;
+        </button>
+      </div>
+      <div class="product-info">
+        <h3 class="product-name">{{ product.name }}</h3>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="product-category">Category: {{ product.category }}</p>
+        <p class="product-price">Price:₹{{ product.price }}</p>
+        <p class="product-stock">Stock: {{ product.stock }}</p>
+        <p class="product-seller">
+          <strong>Seller:</strong> {{ product.sellerId?.businessName || 'N/A' }}
+        </p>
+        <p class="product-seller-contact">
+          <strong>Email:</strong> {{ product.sellerId?.email || 'N/A' }}
+        </p>
+      </div>
+      <div class="cart-actions">
+        <button (click)="decreaseQuantity(product)">-</button>
+        <span>{{ product.quantity || 0 }}</span>
+        <button (click)="increaseQuantity(product)">+</button>
+        <button class="add-to-cart" (click)="addToCart(product)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noProducts>
+    <p class="no-products-message">No products available in this category.</p>
+  </ng-template>
+</div>

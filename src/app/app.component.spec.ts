@@ -1,17 +1,27 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FooterComponent } from './common/component/footer/footer.component';
 
 describe('AppComponent', () => {
+  let translateService: jasmine.SpyObj<TranslateService>;
   beforeEach(async () => {
+    const translateSpy = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        TranslateModule.forRoot()
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        FooterComponent
       ],
+      providers: [
+        { provide: TranslateService, useValue: translateSpy }
+      ]
     }).compileComponents();
+    translateService = TestBed.inject(TranslateService) as jasmine.SpyObj<TranslateService>;
   });
 
   it('should create the app', () => {
@@ -20,16 +30,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Shop-UI'`, () => {
+  it(`should have as title 'Perfect Place'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Shop-UI');
+    expect(app.title).toEqual('Perfect Place');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Shop-UI app is running!');
+  it('should set the default language to "en" and use "en" on init', () => {
+    TestBed.createComponent(AppComponent); // Trigger constructor
+    expect(translateService.setDefaultLang).toHaveBeenCalledWith('en');
+    expect(translateService.use).toHaveBeenCalledWith('en');
   });
+
 });

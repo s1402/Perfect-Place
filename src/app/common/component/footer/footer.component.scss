@@ -1,0 +1,34 @@
+.footer {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    border-top: 1px solid #e9ecef;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #0077b5;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.instagram-link:hover {
+    color: #e4405f;
+}
+
+.instagram-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}

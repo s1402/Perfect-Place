@@ -1,0 +1,43 @@
+<div class="main-container">
+  <app-header></app-header>
+  <div class="orders-container">
+    <!-- Success Banner -->
+    <div *ngIf="showSuccessBanner" class="success-banner">
+      {{ "successMsg.orderStatusUpdated" | translate }}
+    </div>
+
+    <h1>My Orders</h1>
+    <h1>Total Earnings: ₹{{calculateTotalPrice()}} </h1>
+    <div *ngIf="orders?.length === 0" class="empty-orders">
+      <p>No orders yet!</p>
+    </div>
+
+    <div *ngFor="let order of orders" class="order-card">
+      <h2>Order ID: {{ order._id }}</h2>
+      <h3>Status:
+        <select [(ngModel)]="order.status">
+          <option *ngFor="let status of validStatuses" [value]="status">
+            {{ status }}
+          </option>
+        </select>
+        <button class="save-status-button" (click)="updateOrderStatus(order._id, order.status)">Save status</button>
+      </h3>
+      <p>Total Price: ₹{{ order.totalPrice }}</p>
+      <p>Order Created At: {{ order.createdAt | date: 'short' }}</p>
+
+      <div *ngFor="let product of order.products" class="product-card">
+        <div class="product-image">
+          <img [src]="product.productId.images?.[0]?.url" [alt]="product.productId.name || 'Product Image'" />
+        </div>
+        <div class="product-details">
+          <h3>{{ product.productId.name }}</h3>
+          <p>{{ product.productId.description }}</p>
+          <p>Category: {{ product.productId.category }}</p>
+          <p>Price: ₹{{ product.productId.price }}</p>
+          <p>Quantity: {{ product.quantity }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

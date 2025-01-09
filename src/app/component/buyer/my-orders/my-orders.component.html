@@ -1,0 +1,38 @@
+<div class="main-container">
+  <app-header></app-header>
+  <div class="my-orders-container">
+    <h1>My Orders</h1>
+    <div *ngIf="orders.length > 0; else noOrders" class="orders-list">
+      <div class="order-card" *ngFor="let order of orders">
+        <div class="order-header">
+          <h3>Order ID: {{ order._id }}</h3>
+          <p class="order-status">Status: <span>{{ order.status }}</span></p>
+          <p>Order Date: {{ order.createdAt | date }}</p>
+        </div>
+        <div class="order-products">
+          <div *ngFor="let product of order.products" class="product-item">
+            <div class="product-image">
+              <img [src]="product.productId.images?.[0]?.url || 'assets/default-product.png'"
+                [alt]="product.productId.name || 'Product Image'" />
+            </div>
+            <div class="product-details">
+              <h4>{{ product.productId.name || 'Product Not Found' }}</h4>
+              <p>{{ product.productId.description || 'Description not available' }}</p>
+              <p>Quantity: {{ product.quantity }}</p>
+              <p>Price: ₹{{ product.productId.price || 0 }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="order-footer">
+          <p>Total Price: ₹{{ order.totalPrice }}</p>
+        </div>
+      </div>
+    </div>
+    <ng-template #noOrders>
+      <div class="no-orders-message">
+        <h2>You have no orders yet!</h2>
+        <p>Start shopping to place your first order.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<body>
+    <form [formGroup]="form" (ngSubmit)="VerifyEmail()">
+        <span class="header-logo">
+            <img src="../../../../assets/images/perfect-place-logo.png" alt="perfect-place">
+        </span>
+        <div class="form-container">
+            <!----------------- form error ------------------->
+            <span *ngIf="form.errors" class="invalid-otp">
+                {{form.errors['error'].error}}
+            </span>
+            <!----------------- success banner for account created ------------------->
+            <span *ngIf="showSuccessBanner" class="success-banner">
+                <div> {{"successMsg.accountCreated" | translate}} </div>
+            </span>
+            <!----------------- success banner for otp resend ------------------->
+            <span *ngIf="showOtpResendSuccess" class="success-banner">
+                <div> {{"successMsg.otpResend" | translate}} </div>
+            </span>
+            <!-------------- Heading ------------------->
+            <div class="header">
+                {{"register.verifyEmailText" | translate}}
+            </div>
+            <!---------------otp -------------->
+            <div class="form-group">
+                <p>A text with a One Time Password (OTP) has been sent to your email</p>
+                <div class="enter-otp-container">
+                    <label class="enter-otp" for="otp"> {{"VerifyEmail.enterOtp" | translate}}</label>
+                    <!-------------- Resend OTP ------------------->
+                    <a class="resend-otp" (click)="resendOtp()"> {{"VerifyEmail.resendOtp" | translate}}</a>
+                </div>
+                <input type="text" formControlName="otp" name="otp" id="otp" class="otp"
+                    placeholder="Enter 6 digit code">
+                <!------------ Form Validation Errors ------------>
+                <span *ngIf="otp?.touched && otp?.invalid" class="input-error">
+                    <span *ngIf="otp?.errors?.['required']"> {{"error.otpRequired" | translate}}</span>
+                    <span *ngIf="otp?.errors?.['invalidOtp']">
+                        {{"error.invalidOtp" | translate}}
+                    </span>
+                </span>
+            </div>
+
+            <!------ Verify email button ------>
+            <div class="form-group">
+                <button class="verify-email-button">{{"register.verifyEmailText" | translate}}</button>
+            </div>
+        </div>
+    </form>
+</body>
